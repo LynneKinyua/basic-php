@@ -1,14 +1,31 @@
 <?php
-  // Declare the variable 'string' and assign it a value.
-  // The <br> is the HTML equivalent to a new line.
-  $string = 'Hello World!<br>';
 
-  // You can echo the variable, similar to the way you would echo a string.
-  echo $string;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-  // You could also use print.
-  print $string;
+class CreateTasksTable extends Migration
+{
+/**
+* Run the migrations.
+*
+* @return void
+*/
+public function up()
+{
+Schema::create('tasks', function (Blueprint $table) {
+$table->increments('id');
+$table->timestamps();
+});
+}
 
-  // Or, if you are familiar with C, printf can be used too.
-  printf('%s', $string);
-?>
+/**
+* Reverse the migrations.
+*
+* @return void
+*/
+public function down()
+{
+Schema::dropIfExists('tasks');
+}
+}
